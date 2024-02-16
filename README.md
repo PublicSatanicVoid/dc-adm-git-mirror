@@ -45,7 +45,7 @@ users/projects/network shares. broadly, configuring the infra you already have
 - `kvm/bin` -- scripts to be called directly
 - `kvm/bin/hypervisor-setup-ubuntu22.sh` -- installs the required packages to run KVM on a
 bare metal Ubuntu 22 machine
-`kvm/bin/newvm.sh` -- creates and launches a new VM. NOTE, this expects ISOs at
+- `kvm/bin/newvm.sh` -- creates and launches a new VM. NOTE, this expects ISOs at
 - `kvm/iso`; I don't upload these for likely copyright reasons.
 - `kvm/bin/setupvm-<OS>.sh` -- run these once a new VM is launched to configure it for the
 suite of services here (LDAP, NIS, NFS, ...)
