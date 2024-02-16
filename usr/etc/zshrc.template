@@ -1,0 +1,90 @@
+################################## Shell options #################################
+
+set -o noclobber  # Refuse to redirect output to existing files
+set -o physical  # Leave symlinks unresolved
+
+ulimit -c 0  # No core dumps! Gah!
+ulimit -Sn unlimited  # Unlimited number of open files (up to system max)
+
+bindkey ";5D" backward-word
+bindkey "^[[1;5D" backward-word
+
+bindkey ";5C" forward-word
+bindkey "^[[1;5C" forward-word
+
+umask u=rwx,g=rx,o=  # safer default - overridden below for certain directories
+
+setopt PROMPT_SUBST  # zsh: evaluate $(...) in prompt
+setopt nobeep
+
+autoload -U colors && colors
+
+
+############################### Standard exports ################################
+
+export EDITOR=vim
+export VISUAL=vim
+export PAGER=less
+export TERM=xterm-256color
+
+export TZ='America/Chicago'
+export LANG='en_US.UTF-8'
+
+export NO_AT_BRIDGE=1
+export XDG_RUNTIME_DIR=/tmp/run/user/`id -u`
+mkdir -p "$XDG_RUNTIME_DIR"
+chmod a+rx,g+s,+t "/tmp/run" 2>/dev/null
+chmod a+rwx,g+s,+t "/tmp/run/user" 2>/dev/null
+chmod go-rwx "$XDG_RUNTIME_DIR"
+
+
+################################## PATH setup ###################################
+
+PATH=""
+
+# user-specific bin folders
+PATH+="$HOME/bin"
+PATH+=":$HOME/.local/bin"
+
+# standard Unix bin folders
+PATH+=':/tools/bin'
+PATH+=':/usr/local/sbin'
+PATH+=':/usr/local/bin'
+PATH+=':/usr/sbin'
+PATH+=':/usr/bin'
+PATH+=':/snap/bin'
+PATH+=':/sbin'
+PATH+=':/bin'
+
+export PATH
+
+
+[ -f ~/etc/functions.zsh ] && source ~/etc/functions.zsh
+[ -f ~/etc/aliases.zsh ] && source ~/etc/aliases.zsh
+
+
+################################# Prompt setup ##################################
+
+WHOAMI=$(whoami)
+HOSTNAME=$(hostname -s)
+DOMAINNAME=$(hostname -y)
+if [ "$DOMAINNAME" = "hostname: Local domain name not set" ]; then
+	DOMAINNAME=""
+fi
+
+PRIMARY_USER=admin_user
+
+precmd() {
+	if [ -z "$DOMAINNAME" ]; then
+		echo -ne "\033]0;$WHOAMI@$HOSTNAME\007"
+	else
+		echo -ne "\033]0;$WHOAMI@$HOSTNAME@$DOMAINNAME\007"
+
+	fi
+}
+
+#PS1="%f%K%B$WHOAMI%b@%B$HOSTNAME%b[%2~]%(!.#.:) "
+#PS1="%f%K%B$WHOAMI%b@%B$HOSTNAME %b%2~ %B❭ %b"
+PS1="%f%K%B$WHOAMI%b@%B$HOSTNAME%b:%1~$ "
+#RPS1="\$(date +'%m/%d %H:%M')"
+

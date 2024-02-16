@@ -1,0 +1,12 @@
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp1s0:
+      dhcp4: no
+      dhcp6: no
+      addresses: [10.0.0.0/16]  # TODO
+      gateway4: 10.0.0.1
+      nameservers:
+        addresses: [10.0.2.2]
+        search: [home.lab]

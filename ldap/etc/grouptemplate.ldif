@@ -1,0 +1,5 @@
+dn: cn=GROUPNAME,ou=Groups,dc=dc,dc=homelab,dc=net
+objectClass: posixGroup
+cn: GROUPNAME
+gidNumber: GROUP_GID
+

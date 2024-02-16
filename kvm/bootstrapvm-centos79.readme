@@ -1,0 +1,10 @@
+HOST# /tools/kvm/bin/newvm-centos.sh <GUEST> <MEMORY> <VCPUS>
+will shutdown after installing OS
+HOST# virsh start <GUEST>
+HOST# virsh console <GUEST>
+login as root
+GUEST# yum install -y nfs-utils
+GUEST# mkdir /tools
+GUEST# mount 10.0.2.11:/export/tools /tools
+GUEST# /tools/kvm/bin/setupvm-centos79.sh <IP> <GUEST>
+GUEST# exit

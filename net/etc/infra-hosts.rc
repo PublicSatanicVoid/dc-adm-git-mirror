@@ -1,0 +1,32 @@
+# TODO replace with your real values!
+# This gets sourced by various scripts that need to reference these values
+
+export DOMAIN="home.lab"
+
+export DNS_HOST="dns-01"
+export DNS_IP="10.0.123.456"
+
+# DNS round robin for NFS nodes
+export NAS_CLUSTER="nas-rr"
+
+export NAS_ADMIN_HOST="nas-adm-01"
+export NAS_ADMIN_IP="10.0.234.567"
+
+export LDAP_HOST="ldap-01"
+export LDAP_IP="10.0.345.678"
+
+export LDAP_BASE_DN="dc=home,dc=lab"
+export LDAP_ADMIN_DN="cn=admin,$LDAP_BASE_DN"
+
+# Primary admin host
+export ADMIN_HOST_1="adm-01"
+export ADMIN_IP_1="10.0.456.789"
+
+# Secondary admin host (I have this as a different OS that I can use for SW builds)
+export ADMIN_HOST_2="adm-02"
+export ADMIN_IP_2="10.0.567.890"
+
+# Tertiary admin host (I have this on a separate physical machine)
+export ADMIN_HOST_3="adm-03"
+export ADMIN_IP_3="10.0.678.901"
+

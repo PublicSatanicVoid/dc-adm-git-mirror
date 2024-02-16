@@ -1,0 +1,20 @@
+dn: uid=USERNAME,ou=People,dc=dc,dc=homelab,dc=net
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: top
+uid: USERNAME
+sn: USER_SN
+cn: USERNAME
+displayName: USER_DISPLAYNAME
+uidNumber: USER_UID
+gidNumber: USER_UID
+userPassword: USER_PASSWORD
+gecos: USER_DISPLAYNAME
+loginShell: /bin/zsh
+homeDirectory: USER_HOME
+
+dn: cn=USERNAME,ou=Groups,dc=dc,dc=homelab,dc=net
+objectClass: posixGroup
+cn: USERNAME
+gidNumber: USER_UID
+

@@ -1,0 +1,8 @@
+dn: ou=People,dc=dc,dc=homelab,dc=net
+objectClass: organizationalUnit
+ou: People
+
+dn: ou=Groups,dc=dc,dc=homelab,dc=net
+objectClass: organizationalUnit
+ou: Groups
+

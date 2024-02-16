@@ -1,0 +1,4 @@
+dn: cn=GROUPNAME,ou=Groups,dc=dc,dc=homelab,dc=net
+changetype: modify
+add: memberUid
+memberUid: USERNAME

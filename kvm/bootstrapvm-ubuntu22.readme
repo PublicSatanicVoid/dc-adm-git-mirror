@@ -1,0 +1,13 @@
+HOST# /tools/kvm/bin/newvm.sh <GUEST> <MEMORY> <VCPUS>
+login as admin_user
+GUEST$ sudo -i
+GUEST# tmux
+GUEST# apt install -y nfs-common
+GUEST# mkdir /tools
+GUEST# mount 10.0.2.11:/export/tools /tools
+GUEST# /tools/kvm/bin/setupvm-ubuntu22.sh <IP> <GUEST>
+GUEST# exit
+GUEST$ exit
+HOST# virsh console <GUEST>
+login as root
+GUEST# /tools/kvm/bin/finishvm.sh
