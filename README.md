@@ -34,29 +34,29 @@ keepalived
 
 `admin` -- routine administration of a typical server cluster: creating and deleting
 users/projects/network shares. broadly, configuring the infra you already have
-`admin/bin` -- scripts intended to be called directly
-`admin/libexec` -- scripts intended to be called internally by the tools
+- `admin/bin` -- scripts intended to be called directly
+- `admin/libexec` -- scripts intended to be called internally by the tools
 
 `etc` -- general configuration files. symlink to `usr` on my system.
 
 `kvm` -- scripts for setting up and managing KVM.
-`kvm/bin` -- scripts to be called directly
-`kvm/bin/hypervisor-setup-ubuntu22.sh` -- installs the required packages to run KVM on a
+- `kvm/bin` -- scripts to be called directly
+- `kvm/bin/hypervisor-setup-ubuntu22.sh` -- installs the required packages to run KVM on a
 bare metal Ubuntu 22 machine
 `kvm/bin/newvm.sh` -- creates and launches a new VM. NOTE, this expects ISOs at
-`kvm/iso`; I don't upload these for likely copyright reasons.
-`kvm/bin/setupvm-<OS>.sh` -- run these once a new VM is launched to configure it for the
+- `kvm/iso`; I don't upload these for likely copyright reasons.
+- `kvm/bin/setupvm-<OS>.sh` -- run these once a new VM is launched to configure it for the
 suite of services here (LDAP, NIS, NFS, ...)
-`kvm/etc` -- blueprints for VMs
-`kvm/etc/01-netcfg-vm.yaml` -- Replace the values here with your own!
+- `kvm/etc` -- blueprints for VMs
+- `kvm/etc/01-netcfg-vm.yaml` -- Replace the values here with your own!
 
 `ldap` -- scripts for LDAP.
-`ldap/etc` -- template LDIF files.
+- `ldap/etc` -- template LDIF files.
 
 `net` -- scripts for network management.
-`net/bin` -- scripts to be called directly
-`net/etc` -- example/skeleton configs.
-`net/etc/infra-hosts.rc` -- important file used by other scripts in this repo, contains
+- `net/bin` -- scripts to be called directly
+- `net/etc` -- example/skeleton configs.
+- `net/etc/infra-hosts.rc` -- important file used by other scripts in this repo, contains
 critical hostnames/IPs and domain information -- Replace the values here with your own!
 
 `stress` -- utils for stress testing.
