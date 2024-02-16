@@ -15,19 +15,27 @@ should replace this with the actual username you plan to daily-drive.
 ## Quick rundown of my hardware/software setup
 for reference of course, not bragging!
 
-- 2x hypervisors: PowerEdge R630, each with a 256GB SSD for the OS, a 1TB HDD for `/var`,
+- 2x hypervisors: PowerEdge R630, each with a 256GB SSD for the OS, a 1TB HDD for `/var`
+(mainly used for the VM images),
   and 2x 2TB HDDs each passed through directly to the storage nodes
+  - Connected to each other via 10G networking, and to the router via 1G. Switch is a
+  Netgear something-or-other.
 - 1x VM for DNS, running BIND9
 - 1x VM for LDAP, running slapd
 - 1x VM for NIS, running ypserv
 - 1x VM for Ceph mgr, running cephadm
 - 4x VM for Ceph nodes (object storage daemons / OSDs), running Dockerized Ceph
   - These also run Ganesha NFS nodes, also Dockerized via Ceph
+  - Although the hosts are connected via 10Gb, there is no separation of frontend and
+  backend networks, limiting total throughput. Probably I will fix this at some point.
 - 3x VM for admin / software builds. 1 per host, plus an extra of each OS I run.
 - 1x VM for proxy server, running HAProxy
 - 2x VM for web servers, running <some Python framework, honestly don't remember> and
 keepalived
 - A bunch of additional VMs for experimentation and fun!
+
+The default gateway is `10.0.0.1` and the subnet mask is `255.255.0.0`. These values are
+assumed in many places in these scripts.
 
 
 ## Guide to the layout
