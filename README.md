@@ -32,6 +32,8 @@ keepalived
 
 ## Guide to the layout
 
+These all reside on an NFS share mounted at `/tools` on my system.
+
 `admin` -- routine administration of a typical server cluster: creating and deleting
 users/projects/network shares. broadly, configuring the infra you already have
 - `admin/bin` -- scripts intended to be called directly
