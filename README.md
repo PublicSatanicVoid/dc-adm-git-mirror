@@ -28,6 +28,11 @@ for reference of course, not bragging!
   - These also run Ganesha NFS nodes, also Dockerized via Ceph
   - Although the hosts are connected via 10Gb, there is no separation of frontend and
   backend networks, limiting total throughput. Probably I will fix this at some point.
+  - The cluster is configured with 2x replication and uses the recommended number of pgs.
+  - When doing IO via the kernel CephFS driver (rather than NFS) I get ~1GB/s of write
+  throughput and ~250MB/s of read throughput. It benchmarks within spitting distance of
+  the servers' local SSDs, except for worse latency and slightly worse metadata
+  performance.
 - 3x VM for admin / software builds. 1 per host, plus an extra of each OS I run.
 - 1x VM for proxy server, running HAProxy
 - 2x VM for web servers, running <some Python framework, honestly don't remember> and
